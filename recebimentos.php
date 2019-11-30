@@ -20,7 +20,7 @@ if (empty($_SESSION['login'])) {
 	header('location: ./');
 }
 
-if (empty($_GET['dataInit'])) {
+if (empty($_GET['dataInit'])&empty($_GET['dataInitLanc'])) {
 	$dataInit = date('Y-m-01');
 	$dataEnd = date('Y-m-d');
 }
@@ -35,7 +35,7 @@ else{
 	}
 }
 
-$iniQuery = mysqli_query($link, "SELECT * FROM cliente INNER JOIN receber ON cliente.cli_cod = receber.receber_cliente WHERE receber.receber_data_venc BETWEEN '$dataInit' AND '$dataEnd'") or die(mysqli_error($link));
+$iniQuery = mysqli_query($link, "SELECT * FROM cliente INNER JOIN receber ON cliente.cli_cod = receber.receber_cliente WHERE cliente.cli_status=1".(isset($dataInit)?" AND receber.receber_data_venc BETWEEN '$dataInit' AND '$dataEnd'":'')) or die(mysqli_error($link));
 
 $recebimentos = array();
 
@@ -101,9 +101,12 @@ $jsonRecebimentos=json_encode($recebimentos);
 								<input type="date" name="dataEndLanc">
 							</div>
 						</div>
-						<select>
-							
-						</select>
+						<div class="input-group">
+							<label>Forma de pagamento</label>
+							<select>
+								
+							</select>
+						</div>
 					</div>
 					<div class="footer">
 						<button>Pesquisar</button>
