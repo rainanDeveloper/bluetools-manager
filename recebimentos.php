@@ -96,7 +96,7 @@ $jsonRecebimentos=json_encode($recebimentos);
 			<table id="receberContentTbl">
 				<thead>
 					<tr>
-						<th data-label="check"><input type="checkbox" name="headCheck"></th>
+						<th data-label="check"><input type="checkbox" name="headCheck" v-on:change="setAllChecked"></th>
 						<th data-label="cod">Código</th>
 						<th data-label="cliente">Cliente</th>
 						<th data-label="valorParc">Valor parcela</th>
@@ -108,7 +108,7 @@ $jsonRecebimentos=json_encode($recebimentos);
 				</thead>
 				<tbody>
 					<tr v-if="rows" v-for="row in rows" onclick="selectClick(this)">
-						<td class="centered"><input type="checkbox" name="checkInp" :data-id=row.cod></td>
+						<td class="centered"><input type="checkbox" name="checkInp" :data-id=row.cod :checked="allChecked"></td>
 						<td>{{row.receber_cod}}</td>
 						<td>{{row.cli_nome}}</td>
 						<td class="numeric">{{maskMoney(row.receber_valor_parc)}}</td>
@@ -127,11 +127,9 @@ $jsonRecebimentos=json_encode($recebimentos);
 			let checkbox = handler.querySelector("input[type='checkbox']")
 			if (checkbox.checked) {
 				checkbox.checked = false
-				handler.classList.remove("checked-box")
 			}
 			else{
 				checkbox.checked = true
-				handler.classList.add("checked-box")
 			}
 		}
 
@@ -156,7 +154,8 @@ $jsonRecebimentos=json_encode($recebimentos);
 			el: 'table#receberContentTbl',
 			data(){
 				return {
-					rows: <?php echo($jsonRecebimentos); ?>
+					rows: <?php echo($jsonRecebimentos); ?>,
+					allChecked: false
 				}
 			},
 			methods: {
@@ -168,6 +167,14 @@ $jsonRecebimentos=json_encode($recebimentos);
 				},
 				maskMoney: function(number){
 					return this.maskNumber(number).replace(/^/g, "R$ ")
+				},
+				setAllChecked: function(){
+					if (this.allChecked) {
+						this.allChecked=false
+					}
+					else{
+						this.allChecked=true
+					}
 				}
 			}
 		})
