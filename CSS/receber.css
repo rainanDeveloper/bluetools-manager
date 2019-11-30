@@ -1,0 +1,13 @@
+h2.titleReceber {
+	margin: 0;
+	margin-top: 10px;
+	padding: 0 15px;
+	font-size: 16px;
+}
+
+div.content {
+	display: block !important;
+	justify-content: initial !important;
+	align-items: initial !important;
+}
+

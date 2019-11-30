@@ -1,0 +1,59 @@
+div.painel {
+	width: 85%;
+	margin: 10px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 5px;
+	user-select: none;
+}
+
+div.painel h1.panelTitle {
+	grid-column-start: 1;
+	grid-column-end: 5;
+	padding: 10px 0;
+	margin: 0;
+	color: #444;
+}
+
+div.painel div.card {
+	position: relative;
+	background-color: white;
+	padding: 8px;
+	border-radius: 5px;
+	border: solid 1px #ccc;
+}
+
+div.painel div.card h2.cardTitle {
+	font-size: 20px;
+	padding: 5px;
+	margin: 0;
+	position: absolute;
+	bottom: 0;
+	color: #444;
+}
+
+div.painel div.card div.cardContent {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 200px;
+}
+
+div.painel div.card div.cardContent div.indicator {
+	font-size: 50px;
+	font-weight: bold;
+	color: #ddd;
+	text-align: center;
+}
+
+div.painel div.card-double-sized {
+	grid-column-start: 1;
+	grid-column-end: 3;
+}
+
+@media (max-width: 900px) {
+	div.painel {
+		width: 100%;
+	}
+}
