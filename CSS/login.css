@@ -1,0 +1,153 @@
+html, body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/*Keyframes*/
+
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+div.loader {
+	background-color: rgba(255, 255, 255, 0.4);
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top:0;
+	left:0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+div.loader .lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+div.loader .lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #4a75b5;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+div.loader .lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+div.loader .lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+div.loader .lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+div.loader .lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+
+
+.login-container {
+	width: 400px;
+	display: grid;
+	grid-template-rows:repeat(1fr, 4);
+	grid-gap: 5px;
+	padding: 15px;
+	background-color: white;
+	box-shadow: 0 5px 5px #ccc;
+}
+
+input {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 8px;
+	border-radius: 0;
+	border: 1px solid #ccc
+}
+
+input[type="button"], input[type="submit"] {
+	border: 1px solid #24376e;
+	background-color: #4a75b5;
+	color: white;
+	cursor: pointer;
+}
+
+.btn-gp {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 5px;
+}
+
+input[isvalid="false"] {
+	border: 1px solid #ff3232 !important;
+	outline: none;
+	box-shadow: 0 0 0 white;
+}
+
+h3 {
+  margin: 40px 0 0;
+}
+a {
+  color: #42b983;
+}
+
+.login-container h1 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.login-container h1 img {
+	margin-right: 10px;
+	width: 60px;
+	border-radius: 10%;
+}
+
+.error-message {
+	width: 100%;
+	padding: 10px;
+	border: solid thin #ff3232;
+	background-color: #ffa8a8;
+	color: #ff3232;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.message {
+	width: 100%;
+	padding: 10px;
+	border: solid thin #147a19;
+	background-color: #89db7b;
+	color: #147a19;
+	box-sizing: border-box;
+	text-align: center;
+}

@@ -1,0 +1,7 @@
+{
+	"host": "localhost",
+	"user": "myUser",
+	"pass": "root",
+	"base": "bluetools_manager",
+	"license": "123456"
+}
