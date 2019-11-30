@@ -232,8 +232,28 @@ div.advancedSearch div.header {
 	padding-bottom: 10px;
 }
 
-div.advancedSearch div.footer button {
-	margin: 0 5px;
+div.advancedSearch div.content {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+
+div.advancedSearch div.content div.input-group {
+	display: flex;
+	flex-direction: column;
+}
+
+div.advancedSearch div.content div.input-group input {
+	padding: 5px;
+	border: solid 1px #ccc !important;
+	outline: none;
+	margin: 5px 0;
+}
+
+div.advancedSearch div.content div.input-group .inputDates {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 5px;
 }
 
 .close {
