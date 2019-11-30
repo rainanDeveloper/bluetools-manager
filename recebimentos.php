@@ -10,7 +10,7 @@ session_start();
 $CONFIG = json_decode(file_get_contents('./config.json'));
 
 $link = mysqli_connect($CONFIG->host, $CONFIG->user, $CONFIG->pass, $CONFIG->base);
-
+mysqli_set_charset($link, 'utf-8');
 if (mysqli_connect_errno()) {
     printf("Conexão com o mysql falhou: %s\n", mysqli_connect_error());
     exit();
@@ -21,7 +21,7 @@ if (empty($_SESSION['login'])) {
 }
 
 if (empty($_GET['dataInit'])) {
-	$dataInit = date('Y-m-1');
+	$dataInit = date('Y-m-01');
 	$dataEnd = date('Y-m-d');
 }
 else{
@@ -51,6 +51,7 @@ $jsonRecebimentos=json_encode($recebimentos);
 <html>
 <head>
 	<title>Bluetools Manager - Recebimentos</title>
+	<meta charset="utf-8">
 	<script src="./JS/vue.js"></script>
 	<link rel="shortcut icon" href="./Media/logo.png">
 	<link rel="stylesheet" type="text/css" href="CSS/general.css">
@@ -82,7 +83,27 @@ $jsonRecebimentos=json_encode($recebimentos);
 				<div class="advancedSearch">
 					<div class="header">Pesquisa Avançada</div>
 					<div class="content">
-						
+						<div class="input-group">
+							<label>Cliente</label>
+							<input type="text" name="nomeCliente" placeholder="fulano de t...">
+						</div>
+						<div class="input-group">
+							<label>Vencimento</label>
+							<div class="inputDates">
+								<input type="date" name="dataInit" value="<?php echo $dataInit; ?>">
+								<input type="date" name="dataEnd" value="<?php echo $dataEnd; ?>">
+							</div>
+						</div>
+						<div class="input-group">
+							<label>Lançamento</label>
+							<div class="inputDates">
+								<input type="date" name="dataInitLanc">
+								<input type="date" name="dataEndLanc">
+							</div>
+						</div>
+						<select>
+							
+						</select>
 					</div>
 					<div class="footer">
 						<button>Pesquisar</button>

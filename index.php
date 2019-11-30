@@ -6,9 +6,9 @@ session_start();
 $CONFIG = json_decode(file_get_contents('./config.json'));
 
 $link = mysqli_connect($CONFIG->host, $CONFIG->user, $CONFIG->pass, $CONFIG->base);
-
+mysqli_set_charset($link, 'utf-8');
 if (!empty($_POST)) {
-	$user = new User($_POST['inputLogin'], $_POST['inputSenha']);
+	$user = new User(utf8_encode($_POST['inputLogin']), utf8_encode($_POST['inputSenha']));
 
 	if ($user->validateUser($link)) {
 		$_SESSION['login'] = $_POST['inputLogin'];
@@ -24,6 +24,7 @@ if (!empty($_POST)) {
 <html>
 <head>
 	<title>Login</title>
+	<meta charset="utf-8">
 	<link rel="shortcut icon" href="./Media/logo.png">
 	<script src="./JS/vue.js"></script>
 	<link rel="stylesheet" type="text/css" href="CSS/general.css">
