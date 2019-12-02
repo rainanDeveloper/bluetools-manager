@@ -74,8 +74,8 @@ $jsonRecebimentos=json_encode($recebimentos);
 				<button class="search-btn" v-on:click="displaySearch"><i class="fas fa-search search-btn-icon"></i></button>
 
 				<div class="optionsBtns">
-					<button onclick="openAddReceberWindow(event)"><i class="fas fa-file"></i>Novo</button>
-					<button onclick="openEditReceberWindow(event)"><i class="fas fa-pen"></i>Editar</button>
+					<button onclick="openAddReceberWindow()"><i class="fas fa-file"></i>Novo</button>
+					<button onclick="openEditReceberWindow()"><i class="fas fa-pen"></i>Editar</button>
 					<button><i class="fas fa-times"></i>Excluir</button>
 					<button><i class="fas fa-print"></i>Imprimir lista</button>
 				</div>
@@ -109,7 +109,7 @@ $jsonRecebimentos=json_encode($recebimentos);
 						</div>
 					</div>
 					<div class="footer">
-						<button>Pesquisar</button>
+						<button v-on:click="submitSearch">Pesquisar</button>
 						<button class="close" v-on:click="hideSearch">Fechar</button>
 					</div>
 				</div>
@@ -147,6 +147,11 @@ $jsonRecebimentos=json_encode($recebimentos);
 	</div>
 
 	<script type="text/javascript">
+		openAddReceberWindow= ()=>{
+			window.open('./receber.php?new',"_blank", "height=450, width=820, top=100, left=100");
+		}
+
+
 		function selectClick(handler) {
 			let checkbox = handler.querySelector("input[type='checkbox']")
 			if (checkbox.checked) {
@@ -170,6 +175,9 @@ $jsonRecebimentos=json_encode($recebimentos);
 				},
 				hideSearch: function(){
 					this.search = false
+				},
+				submitSearch: function(){
+					document.querySelector('form#advancedSearch').submit();
 				}
 			}
 		})
