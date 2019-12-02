@@ -148,7 +148,11 @@ $jsonRecebimentos=json_encode($recebimentos);
 
 	<script type="text/javascript">
 		openAddReceberWindow= ()=>{
-			window.open('./receber.php?new',"_blank", "height=450, width=820, top=100, left=100");
+			let addWindow = window.open('./receber.php?new',"_blank", "height=450, width=820, top=100, left=100");
+
+			addWindow.onBeforeUnload = ()=>{
+				window.location = window.location
+			}
 		}
 
 
