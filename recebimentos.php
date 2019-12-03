@@ -109,6 +109,7 @@ $jsonRecebimentos=json_encode($recebimentos);
 						</div>
 					</div>
 					<div class="footer">
+
 						<button v-on:click="submitForm">Pesquisar</button>
 						<button class="close" v-on:click="hideSearch">Fechar</button>
 					</div>
@@ -189,7 +190,7 @@ $jsonRecebimentos=json_encode($recebimentos);
 				hideSearch: function(){
 					this.search = false
 				},
-				submitForm: ()=>{
+        submitForm: ()=>{
 					document.querySelector('form#advancedSearch').submit()
 				}
 			}

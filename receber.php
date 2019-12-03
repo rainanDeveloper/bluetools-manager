@@ -51,5 +51,6 @@ if (mysqli_connect_errno()) {
 			}
 		})
  	</script>
+
  </body>
  </html>
