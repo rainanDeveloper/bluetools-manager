@@ -1,7 +1,7 @@
 {
 	"host": "localhost",
-	"user": "clarionerp",
-	"pass": "clarion1472580*",
+	"user": "myUser",
+	"pass": "root",
 	"base": "bluetools_manager",
 	"license": "123456"
 }

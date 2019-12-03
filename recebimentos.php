@@ -109,7 +109,8 @@ $jsonRecebimentos=json_encode($recebimentos);
 						</div>
 					</div>
 					<div class="footer">
-						<button v-on:click="submitSearch">Pesquisar</button>
+
+						<button v-on:click="submitForm">Pesquisar</button>
 						<button class="close" v-on:click="hideSearch">Fechar</button>
 					</div>
 				</div>
@@ -132,7 +133,7 @@ $jsonRecebimentos=json_encode($recebimentos);
 				</thead>
 				<tbody>
 					<tr v-if="rows" v-for="row in rows" onclick="selectClick(this)">
-						<td class="centered"><input type="checkbox" name="checkInp" :data-id=row.cod :checked="allChecked"></td>
+						<td class="centered"><input type="checkbox" :data-id="row.receber_cod" name="checkInp" class="checkId" :checked="allChecked"></td>
 						<td>{{row.receber_cod}}</td>
 						<td>{{row.cli_nome}}</td>
 						<td class="numeric">{{maskMoney(row.receber_valor_parc)}}</td>
@@ -147,14 +148,23 @@ $jsonRecebimentos=json_encode($recebimentos);
 	</div>
 
 	<script type="text/javascript">
-		openAddReceberWindow= ()=>{
-			let addWindow = window.open('./receber.php?new',"_blank", "height=450, width=820, top=100, left=100");
 
-			addWindow.onBeforeUnload = ()=>{
-				window.location = window.location
-			}
+		let openAddReceberWindow = ()=>{
+			let addWindow = window.open("./receber.php?new", "_blank", "height=450px, width=820px");
 		}
 
+		let openEditReceberWindow = ()=>{
+			try{
+				let id = document.querySelector('table#receberContentTbl input.checkId:checked').dataset.id
+
+				let editWindow = window.open("./receber.php?id="+id, "_blank", "height=450px, width=820px");
+			}
+			catch{
+				console.error("Erro ao abrir conta a receber: Verifique se alguma conta foi selecionada!")
+
+				alert("Erro ao abrir conta a receber: Verifique se alguma conta foi selecionada!")
+			}
+		}
 
 		function selectClick(handler) {
 			let checkbox = handler.querySelector("input[type='checkbox']")
@@ -180,8 +190,8 @@ $jsonRecebimentos=json_encode($recebimentos);
 				hideSearch: function(){
 					this.search = false
 				},
-				submitSearch: function(){
-					document.querySelector('form#advancedSearch').submit();
+        submitForm: ()=>{
+					document.querySelector('form#advancedSearch').submit()
 				}
 			}
 		})
